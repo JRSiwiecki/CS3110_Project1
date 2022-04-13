@@ -5,7 +5,7 @@
 // Date: 4/13/2022
 // Due Date: 4/13/2022
 // File Name: validateStringDFA.java
-// Description: Validates string input by checking if it is a valid floating-point literal.  
+// Description: Uses a DFA to validate string input by checking if it is a valid floating-point literal.  
 //      Accepts: 
 //                  Digits . [Digits] [ExponentPart] [FloatTypeSuffix]
 //                  . Digits [ExponentPart] [FloatTypeSuffix]
@@ -53,7 +53,6 @@ public class validateStringDFA
     public static String receiveInput() 
     {
         Scanner in = new Scanner(System.in);
-
         System.out.print("Please enter a float (Enter 'q' to quit): ");
 
         String userInput = in.nextLine();
