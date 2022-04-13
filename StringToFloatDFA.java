@@ -60,6 +60,11 @@ public class StringToFloatDFA
     // non-final state
     private static int startState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
         
@@ -98,6 +103,11 @@ public class StringToFloatDFA
     // non final-state
     private static int wholeNumberState(String input, int count)
     {
+        if (count >= input.length())
+        {
+            return 0;
+        }
+        
         char c = input.charAt(count);
         int result = -1;    
     
@@ -149,6 +159,11 @@ public class StringToFloatDFA
     // non-final state
     private static int decimalNoWholeNumberState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -185,6 +200,11 @@ public class StringToFloatDFA
     // non-final state
     private static int underscoreWholeNumberState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -225,8 +245,18 @@ public class StringToFloatDFA
     // final state
     private static int decimalWholeNumberState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 1;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
+
+        switch (c)
+        {
+
+        }
 
         return result;
     }
@@ -234,6 +264,11 @@ public class StringToFloatDFA
     // non-final state
     private static int exponentState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -243,6 +278,11 @@ public class StringToFloatDFA
     // final state
     private static int suffixState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 1;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -252,6 +292,11 @@ public class StringToFloatDFA
     // final state
     private static int fractionState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 1;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -261,6 +306,11 @@ public class StringToFloatDFA
     // final state
     private static int fractionWithWholeState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 1;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -270,6 +320,11 @@ public class StringToFloatDFA
     // final state
     private static int exponentNumberState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 1;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -279,6 +334,11 @@ public class StringToFloatDFA
     // non-final state
     private static int underscoreFractionState(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -288,6 +348,11 @@ public class StringToFloatDFA
     // non-final state
     private static int underscoreWholeFraction(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
@@ -297,6 +362,11 @@ public class StringToFloatDFA
     // non-final state
     private static int underscoreExponent(String input, int count)
     {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
         char c = input.charAt(count);
         int result = -1;
 
