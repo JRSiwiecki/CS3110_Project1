@@ -75,7 +75,7 @@ public class validateStringDFA
         }
     }
 
-    // input validation is done through method calls and recursively going through specific paths
+    // input validation is done through method calls and recursively going through specific paths.
     // methods represent one state, each method takes in the input string
     // and a count to keep track of where we are in the string.
     // count is increased by one each time we transition to another state.

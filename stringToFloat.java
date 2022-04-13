@@ -6,6 +6,8 @@
 // Due Date: 4/13/2022
 // File Name: stringToFloat.java
 // Description: Converts validated string input to a floating-point literal.
+//          *** This file does not contain a main method. Run validateStringDFA.java
+//              to test inputs.
 
 import java.math.BigDecimal;
 
