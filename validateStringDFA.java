@@ -33,7 +33,7 @@ public class validateStringDFA
         if (validity == 1)
         {
             System.out.println("Input accepted.");
-            System.out.println(stringToFloat.convertStringToFloat(input));
+            System.out.println("Float: " + stringToFloat.convertStringToFloat(input));
             return true;
         }
 
