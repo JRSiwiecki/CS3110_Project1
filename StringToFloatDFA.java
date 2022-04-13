@@ -4,11 +4,22 @@ public class StringToFloatDFA
 { 
     public static boolean validateInput(String input) 
     {
-        boolean validity = true;
-            
+        int validity = 0;
+        int count = 0;
 
+        // if 1 is returned, input is accepted. 
+        // if 0 is returned, input is rejected.
+        validity = startState(String input, count);
 
-        return validity;
+        if (validity == 1)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
     }
 
     public static String receiveInput() 
@@ -19,7 +30,8 @@ public class StringToFloatDFA
 
         String userInput = in.nextLine();
 
-        if (userInput == "q" || userInput == "Q") {
+        if (userInput == "q" || userInput == "Q") 
+        {
             System.exit(0);
         }
 
@@ -37,72 +49,98 @@ public class StringToFloatDFA
         }
     }
 
-    private static void startState(char c)
+    private static int startState(String input, int count)
+    {
+        char c = input.charAt(count);
+        
+        switch (c)
+        {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                return wholeNumberState(input, count + 1);
+                
+            case '+':
+            case '-':
+            case '_':
+            case 'e':
+            case 'f':
+            case 'd':
+                return invalidState(input, count + 1);
+                
+            case '.':
+                return DecimalNoWholeNumberState(input, count + 1);
+        }
+    }
+
+    private static int wholeNumberState(String input, int count)
     {
 
     }
 
-    private static void wholeNumberState(char c)
+    private static int invalidState(String input, int count)
     {
 
     }
 
-    private static void invalidState(char c)
+    private static int DecimalNoWholeNumberState(String input, int count)
     {
 
     }
 
-    private static void DecimalNoWholeNumberState(char c)
+    private static int UnderscoreWholeNumberState(String input, int count)
     {
 
     }
 
-    private static void UnderscoreWholeNumberState(char c)
+    private static int DecimalWholeNumberState(String input, int count)
     {
 
     }
 
-    private static void DecimalWholeNumberState(char c)
+    private static int ExponentState(String input, int count)
     {
 
     }
 
-    private static void ExponentState(char c)
+    private static int SuffixState(String input, int count)
     {
 
     }
 
-    private static void SuffixState(char c)
+    private static int FractionState(String input, int count)
     {
 
     }
 
-    private static void FractionState(char c)
+    private static int FractionWithWholeState(String input, int count)
     {
 
     }
 
-    private static void FractionWithWholeState(char c)
+    private static int ExponentNumberState(String input, int count)
     {
 
     }
 
-    private static void ExponentNumberState(char c)
+    private static int UnderscoreFractionState(String input, int count)
     {
 
     }
 
-    private static void UnderscoreFractionState(char c)
+    private static int UnderscoreWholeFraction(String input, int count)
     {
 
     }
 
-    private static void UnderscoreWholeFraction(char c)
-    {
-
-    }
-
-    private static void UnderscoreExponent(char c)
+    private static int UnderscoreExponent(String input, int count)
     {
 
     }
