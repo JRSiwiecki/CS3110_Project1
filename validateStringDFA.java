@@ -15,6 +15,8 @@
 //                         between digits that denote the whole-number part, and between digits 
 //                         that denote the fraction part, and between digits that denote the exponent. 
 
+// *** RUN THIS FILE TO TEST PROGRAM
+
 import java.util.Scanner;
 
 public class validateStringDFA 
@@ -73,6 +75,17 @@ public class validateStringDFA
         }
     }
 
+    // input validation is done through method calls and recursively going through specific paths
+    // methods represent one state, each method takes in the input string
+    // and a count to keep track of where we are in the string.
+    // count is increased by one each time we transition to another state.
+    // switch statements are used to represent transitions for each state.
+    // only the startState method needs to return the final value since it's the one we begin on
+    // and recursion will only return the value for the first method that was called.
+    // if we reach the end of the input string when we first get to a method, then
+    // we return 0 from that method if the state is a non-final state, and if
+    // it's a final state, we return 0.
+    
     // non-final state
     private static int startState(String input, int count)
     {
