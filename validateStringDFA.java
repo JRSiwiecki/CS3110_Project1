@@ -13,7 +13,8 @@
 //                  Digits [ExponentPart] FloatTypeSuffix
 //                      ** Underscores are allowed as separators 
 //                         between digits that denote the whole-number part, and between digits 
-//                         that denote the fraction part, and between digits that denote the exponent. 
+//                         that denote the fraction part, and between digits that denote the exponent.
+//                      ** If we receive any input symbols that is not part of the alphabet, the input is rejected. 
 
 // *** RUN THIS FILE TO TEST PROGRAM
 
@@ -94,7 +95,6 @@ public class validateStringDFA
         }
         
         char c = input.charAt(count);
-        int result = -1;
         
         switch (c)
         {
@@ -123,9 +123,10 @@ public class validateStringDFA
                 
             case '.':
                 return decimalNoWholeNumberState(input, count + 1);
-        }
 
-        return result;
+            default:
+                return invalidState(input, count + 1);
+        }
     }
 
     // non final-state
@@ -178,6 +179,10 @@ public class validateStringDFA
             case '-':
                 result = invalidState(input, count + 1);
                 break;
+
+            default: 
+                result = invalidState(input, count + 1);
+                break;
         }      
         
         return result;
@@ -228,6 +233,9 @@ public class validateStringDFA
             case '.':
                 result = invalidState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
         
         return result;
@@ -277,6 +285,9 @@ public class validateStringDFA
             case 'F':
                 result = invalidState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
         
         return result;
@@ -323,6 +334,9 @@ public class validateStringDFA
             case '.':
                 result = invalidState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
 
         return result;
@@ -366,6 +380,9 @@ public class validateStringDFA
             case 'D':
                 result = invalidState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
 
         return result;
@@ -432,6 +449,9 @@ public class validateStringDFA
             case 'D':
                 result = suffixState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
 
         return result;
@@ -484,6 +504,9 @@ public class validateStringDFA
             case 'D':
                 result = suffixState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
 
         return result;
@@ -533,6 +556,9 @@ public class validateStringDFA
             case 'D':
                 result = suffixState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
         
         return result;
@@ -579,6 +605,9 @@ public class validateStringDFA
             case 'D':
                 result = invalidState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
 
         return result;
@@ -625,6 +654,9 @@ public class validateStringDFA
             case 'D':
                 result = invalidState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
         
         return result;
@@ -671,6 +703,9 @@ public class validateStringDFA
             case 'D':
                 result = invalidState(input, count + 1);
                 break;
+
+            default:
+                return invalidState(input, count + 1);
         }
 
         return result;
