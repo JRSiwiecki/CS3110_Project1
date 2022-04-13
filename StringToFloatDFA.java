@@ -225,54 +225,81 @@ public class StringToFloatDFA
     // final state
     private static int decimalWholeNumberState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 
     // non-final state
     private static int exponentState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 
     // final state
     private static int suffixState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 
     // final state
     private static int fractionState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 
     // final state
     private static int fractionWithWholeState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 
     // final state
     private static int exponentNumberState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 
     // non-final state
     private static int underscoreFractionState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 
     // non-final state
     private static int underscoreWholeFraction(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 
     // non-final state
     private static int underscoreExponent(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        return result;
     }
 }
