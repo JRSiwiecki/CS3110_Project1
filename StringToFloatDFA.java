@@ -255,7 +255,30 @@ public class StringToFloatDFA
 
         switch (c)
         {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                result = fractionWithWholeState(input, count + 1);
 
+            case 'f':
+            case 'F':
+            case 'd':
+            case 'D':
+                result = suffixState(input, count + 1);
+
+            case '+':
+            case '-':
+            case '_':
+            case 'e':
+            case 'E':
+                result = invalidState(input, count + 1);
         }
 
         return result;
@@ -272,6 +295,33 @@ public class StringToFloatDFA
         char c = input.charAt(count);
         int result = -1;
 
+        switch (c)
+        {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9': 
+            case '+':
+            case '-':
+                result = exponentNumberState(input, count + 1);
+
+            case '_':
+            case '.':
+            case 'e':
+            case 'E':
+            case 'f':
+            case 'F':
+            case 'd':
+            case 'D':
+                result = invalidState(input, count + 1);
+        }
+
         return result;
     }
 
@@ -283,10 +333,10 @@ public class StringToFloatDFA
             return 1;
         }
         
-        char c = input.charAt(count);
-        int result = -1;
-
-        return result;
+        else
+        {
+            return 0;
+        }
     }
 
     // final state
@@ -299,6 +349,38 @@ public class StringToFloatDFA
         
         char c = input.charAt(count);
         int result = -1;
+
+        switch (c)
+        {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                result = fractionState(input, count + 1);
+
+            case '+':
+            case '-':
+            case '.':
+                result = invalidState(input, count + 1);
+
+            case '_':
+                result = underscoreFractionState(input, count + 1);
+
+            case 'e':
+                result = exponentState(input, count + 1);
+
+            case 'f':
+            case 'F':
+            case 'd':
+            case 'D':
+                result = suffixState(input, count + 1);
+        }
 
         return result;
     }
