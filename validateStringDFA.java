@@ -21,7 +21,7 @@
 
 import java.util.Scanner;
 
-public class StringToFloatDFA 
+public class validateStringDFA 
 { 
     public static boolean validateInput(String input) 
     {
