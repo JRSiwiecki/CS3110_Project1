@@ -532,6 +532,35 @@ public class StringToFloatDFA
         char c = input.charAt(count);
         int result = -1;
 
+        switch (c) 
+        {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                result = fractionWithWholeState(input, count + 1);
+
+            case '_':
+                result = underscoreWholeFraction(input, count + 1);
+
+            case '+':
+            case '-':
+            case '.':
+            case 'e':
+            case 'E':
+            case 'f':
+            case 'F':
+            case 'd':
+            case 'D':
+                result = invalidState(input, count + 1);
+        }
+        
         return result;
     }
 
@@ -545,6 +574,35 @@ public class StringToFloatDFA
         
         char c = input.charAt(count);
         int result = -1;
+
+        switch (c)
+        {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                result = exponentNumberState(input, count + 1);
+
+            case '_':
+                result = underscoreExponent(input, count + 1);
+
+            case '+':
+            case '-':
+            case '.':
+            case 'e':
+            case 'E':
+            case 'f':
+            case 'F':
+            case 'd':
+            case 'D':
+                result = invalidState(input, count + 1);
+        }
 
         return result;
     }
