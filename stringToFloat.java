@@ -249,22 +249,4 @@ public class stringToFloat
         // System.out.println("BigDecimal Value: " + accResult.toString()); 
         return accResult.floatValue();
     }
-
-    // helper function that removes uneccesary characters
-    public static String removeSpaces(String expression)
-    {
-        StringBuilder sb = new StringBuilder(expression);
-
-        for (int i = 0; i < sb.length(); i++)
-        {
-            if (sb.charAt(i) == ' ')
-            {
-                sb.deleteCharAt(i);
-                i--;
-            }   
-        }
-        
-        String newExpression = sb.toString();
-        return newExpression;
-    }
 }
