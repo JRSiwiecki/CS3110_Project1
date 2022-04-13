@@ -1,4 +1,6 @@
 GitHub: https://github.com/JRSiwiecki/CS3110_Project1
+DFA defined: https://docs.google.com/document/d/e/2PACX-1vRdB5yqCvv-M_x-Vs_F7QX8_F_qfCkbgkOTeZCyzNyOMjZI7sKmnusWp1FUeWjNVfZy4Hjqbte4x_TC/pub
+	**** Defined with 5-tuple contaning set of start states, alphabet, transition function, start state, and set of final states.
 
 Run the validateStringDFA.java file to test inputs.
 
