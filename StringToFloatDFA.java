@@ -1,26 +1,25 @@
 import java.util.Scanner;
-import java.util.Stack;
 
-public class StringToFloatDFA {
-    public static void main(String[] args) 
+public class StringToFloatDFA 
+{ 
+    public static boolean validateInput(String input) 
     {
-        while (true)
-        {
-            String input = receiveInput();
-            boolean valid = validateInput(input);
-        }
+        boolean validity = true;
+            
+
+
+        return validity;
     }
 
-    public static String receiveInput()
+    public static String receiveInput() 
     {
         Scanner in = new Scanner(System.in);
 
         System.out.print("Please enter a float (Enter 'q' to quit): ");
-        
+
         String userInput = in.nextLine();
 
-        if (userInput == "q" || userInput == "Q")
-        {
+        if (userInput == "q" || userInput == "Q") {
             System.exit(0);
         }
 
@@ -29,64 +28,82 @@ public class StringToFloatDFA {
         return userInput;
     }
     
-    public static boolean validateInput(String input) 
+    public static void main(String[] args) 
     {
-        boolean validity = true;
-
-        boolean decimalReached = false;
-
-        for (int i = 0; i < input.length(); i++) {
-            char next = input.charAt(i);
-
-            switch (next) {
-                case '0':
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
-                    break;
-                
-                case '.':
-                    if (decimalReached)
-                        return false;
-                    else
-                        decimalReached = true;
-                    break;
-                
-                case '+':
-                    
-                    break;
-
-                case '-':
-                    
-                    break;
-
-                case '_':
-
-                    break;
-
-                case 'e':
-                case 'E':
-
-                    break;
-
-                case 'f':
-                case 'F':
-
-                    break;
-
-                case 'd':
-                case 'D':
-
-                    break;
-            }
+        while (true) 
+        {
+            String input = receiveInput();
+            boolean valid = validateInput(input);
         }
+    }
 
-        return validity;
+    private static void startState(char c)
+    {
+
+    }
+
+    private static void wholeNumberState(char c)
+    {
+
+    }
+
+    private static void invalidState(char c)
+    {
+
+    }
+
+    private static void DecimalNoWholeNumberState(char c)
+    {
+
+    }
+
+    private static void UnderscoreWholeNumberState(char c)
+    {
+
+    }
+
+    private static void DecimalWholeNumberState(char c)
+    {
+
+    }
+
+    private static void ExponentState(char c)
+    {
+
+    }
+
+    private static void SuffixState(char c)
+    {
+
+    }
+
+    private static void FractionState(char c)
+    {
+
+    }
+
+    private static void FractionWithWholeState(char c)
+    {
+
+    }
+
+    private static void ExponentNumberState(char c)
+    {
+
+    }
+
+    private static void UnderscoreFractionState(char c)
+    {
+
+    }
+
+    private static void UnderscoreWholeFraction(char c)
+    {
+
+    }
+
+    private static void UnderscoreExponent(char c)
+    {
+
     }
 }
