@@ -123,27 +123,33 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return wholeNumberState(input, count + 1);
+                result = wholeNumberState(input, count + 1);
+                break;
                 
             case '_':
-                return underscoreWholeNumberState(input, count + 1);
-            
+                result = underscoreWholeNumberState(input, count + 1);
+                break;
+
             case '.':
-                return decimalWholeNumberState(input, count + 1);
+                result = decimalWholeNumberState(input, count + 1);
+                break;
             
             case 'e':
             case 'E':
-                exponentState(input, count + 1);
+                result = exponentState(input, count + 1);
+                break;
 
             case 'f':
             case 'F':
             case 'd':
             case 'D':
-                suffixState(input, count + 1);
+                result = suffixState(input, count + 1);
+                break;
             
             case '+':
             case '-':
-                invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
         }      
         
         return result;
@@ -179,7 +185,8 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return fractionState(input, count + 1);
+                result = fractionState(input, count + 1);
+                break;
             
             case '+':
             case '-':
@@ -191,7 +198,8 @@ public class StringToFloatDFA
             case 'd':
             case 'D':
             case '.':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
         }
         
         return result;
@@ -220,14 +228,17 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return wholeNumberState(input, count + 1);
+                result = wholeNumberState(input, count + 1);
+                break;
 
             case '+':
             case '-':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
 
             case '_':
-                return underscoreWholeNumberState(input, count + 1);
+                result = underscoreWholeNumberState(input, count + 1);
+                break;
 
             case '.':
             case 'e':
@@ -236,7 +247,8 @@ public class StringToFloatDFA
             case 'D':
             case 'f':
             case 'F':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
         }
         
         return result;
@@ -265,20 +277,24 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return fractionWithWholeState(input, count + 1);
+                result = fractionWithWholeState(input, count + 1);
+                break;
 
             case 'f':
             case 'F':
             case 'd':
             case 'D':
-                return suffixState(input, count + 1);
+                result = suffixState(input, count + 1);
+                break;
 
             case '+':
             case '-':
             case '_':
             case 'e':
             case 'E':
-                return invalidState(input, count + 1);
+            case '.':
+                result = invalidState(input, count + 1);
+                break;
         }
 
         return result;
@@ -309,7 +325,8 @@ public class StringToFloatDFA
             case '9': 
             case '+':
             case '-':
-                return exponentNumberState(input, count + 1);
+                result = exponentNumberState(input, count + 1);
+                break;
 
             case '_':
             case '.':
@@ -319,7 +336,8 @@ public class StringToFloatDFA
             case 'F':
             case 'd':
             case 'D':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
         }
 
         return result;
@@ -362,25 +380,30 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return fractionState(input, count + 1);
+                result = fractionState(input, count + 1);
+                break;
 
             case '+':
             case '-':
             case '.':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
 
             case '_':
-                return underscoreFractionState(input, count + 1);
+                result = underscoreFractionState(input, count + 1);
+                break;
 
             case 'e':
             case 'E':
-                return exponentState(input, count + 1);
+                result = exponentState(input, count + 1);
+                break;
 
             case 'f':
             case 'F':
             case 'd':
             case 'D':
-                return suffixState(input, count + 1);
+                result = suffixState(input, count + 1);
+                break;
         }
 
         return result;
@@ -409,25 +432,30 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return fractionWithWholeState(input, count + 1);
+                result = fractionWithWholeState(input, count + 1);
+                break;
 
             case '+':
             case '-':
             case '.':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
 
             case '_':
-                return underscoreWholeFraction(input, count + 1);
+                result = underscoreWholeFraction(input, count + 1);
+                break;
 
             case 'e':
             case 'E':
-                return exponentState(input, count + 1);
+                result = exponentState(input, count + 1);
+                break;
 
             case 'f':
             case 'F':
             case 'd':
             case 'D':
-                return suffixState(input, count + 1);
+                result = suffixState(input, count + 1);
+                break;
         }
 
         return result;
@@ -456,23 +484,27 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return exponentNumberState(input, count + 1);
+                result = exponentNumberState(input, count + 1);
+                break;
 
             case '+':
             case '-':
             case '.':
             case 'e':
             case 'E':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
 
             case '_':
-                return underscoreExponent(input, count + 1);
+                result = underscoreExponent(input, count + 1);
+                break;
 
             case 'f':
             case 'F':
             case 'd':
             case 'D':
-                return result = suffixState(input, count + 1);
+                result = suffixState(input, count + 1);
+                break;
         }
         
         return result;
@@ -501,10 +533,12 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return fractionState(input, count + 1);
+                result = fractionState(input, count + 1);
+                break;
 
             case '_':
-                return underscoreFractionState(input, count + 1);
+                result = underscoreFractionState(input, count + 1);
+                break;
             
             case '+':
             case '-':
@@ -515,7 +549,8 @@ public class StringToFloatDFA
             case 'F':
             case 'd':
             case 'D':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
         }
 
         return result;
@@ -544,10 +579,12 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return fractionWithWholeState(input, count + 1);
+                result = fractionWithWholeState(input, count + 1);
+                break;
 
             case '_':
-                return underscoreWholeFraction(input, count + 1);
+                result = underscoreWholeFraction(input, count + 1);
+                break;
 
             case '+':
             case '-':
@@ -558,7 +595,8 @@ public class StringToFloatDFA
             case 'F':
             case 'd':
             case 'D':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
         }
         
         return result;
@@ -587,10 +625,12 @@ public class StringToFloatDFA
             case '7':
             case '8':
             case '9':
-                return exponentNumberState(input, count + 1);
+                result = exponentNumberState(input, count + 1);
+                break;
 
             case '_':
-                return underscoreExponent(input, count + 1);
+                result = underscoreExponent(input, count + 1);
+                break;
 
             case '+':
             case '-':
@@ -601,7 +641,8 @@ public class StringToFloatDFA
             case 'F':
             case 'd':
             case 'D':
-                return invalidState(input, count + 1);
+                result = invalidState(input, count + 1);
+                break;
         }
 
         return result;
