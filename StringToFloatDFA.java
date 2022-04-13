@@ -9,15 +9,23 @@ public class StringToFloatDFA
 
         // if 1 is returned, input is accepted. 
         // if 0 is returned, input is rejected.
-        validity = startState(String input, count);
+        validity = startState(input, count);
 
         if (validity == 1)
         {
+            System.out.println("Input accepted.");
             return true;
         }
 
-        else
+        else if (validity == 0)
         {
+            System.out.println("Input rejected.");
+            return false;
+        }
+
+        else 
+        {
+            System.out.println("ERROR: This should not have been reached.");
             return false;
         }
     }
@@ -45,7 +53,7 @@ public class StringToFloatDFA
         while (true) 
         {
             String input = receiveInput();
-            boolean valid = validateInput(input);
+            validateInput(input);
         }
     }
 
@@ -81,7 +89,7 @@ public class StringToFloatDFA
                 result = invalidState(input, count + 1);
                 
             case '.':
-                result = DecimalNoWholeNumberState(input, count + 1);
+                result = decimalNoWholeNumberState(input, count + 1);
         }
 
         return result;
@@ -108,20 +116,20 @@ public class StringToFloatDFA
                 result = wholeNumberState(input, count + 1);
                 
             case '_':
-                result = UnderscoreWholeNumberState(input, count + 1);
+                result = underscoreWholeNumberState(input, count + 1);
             
             case '.':
-                result = DecimalWholeNumberState(input, count + 1);
+                result = decimalWholeNumberState(input, count + 1);
             
             case 'e':
             case 'E':
-                result = ExponentState(input, count + 1);
+                result = exponentState(input, count + 1);
 
             case 'f':
             case 'F':
             case 'd':
             case 'D':
-                result = SuffixState(input, count + 1);
+                result = suffixState(input, count + 1);
             
             case '+':
             case '-':
@@ -139,67 +147,131 @@ public class StringToFloatDFA
     }
 
     // non-final state
-    private static int DecimalNoWholeNumberState(String input, int count)
+    private static int decimalNoWholeNumberState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
+
+        switch (c)
+        {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                result = fractionState(input, count + 1);
+            
+            case '+':
+            case '-':
+            case '_':
+            case 'e':
+            case 'E':
+            case 'f':
+            case 'F':
+            case 'd':
+            case 'D':
+            case '.':
+                result = invalidState(input, count + 1);
+        }
         
+        return result;
     }
 
     // non-final state
-    private static int UnderscoreWholeNumberState(String input, int count)
+    private static int underscoreWholeNumberState(String input, int count)
     {
+        char c = input.charAt(count);
+        int result = -1;
 
+        switch (c)
+        {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                result = wholeNumberState(input, count + 1);
+
+            case '+':
+            case '-':
+                result = invalidState(input, count + 1);
+
+            case '_':
+                result = underscoreWholeNumberState(input, count + 1);
+
+            case '.':
+            case 'e':
+            case 'E':
+            case 'd':
+            case 'D':
+            case 'f':
+            case 'F':
+                result = invalidState(input, count + 1);
+        }
+        
+        return result;
     }
 
     // final state
-    private static int DecimalWholeNumberState(String input, int count)
-    {
-
-    }
-
-    // non-final state
-    private static int ExponentState(String input, int count)
-    {
-
-    }
-
-    // final state
-    private static int SuffixState(String input, int count)
-    {
-
-    }
-
-    // final state
-    private static int FractionState(String input, int count)
-    {
-
-    }
-
-    // final state
-    private static int FractionWithWholeState(String input, int count)
-    {
-
-    }
-
-    // final state
-    private static int ExponentNumberState(String input, int count)
-    {
-
-    }
-
-    // non-final state
-    private static int UnderscoreFractionState(String input, int count)
-    {
-
-    }
-
-    // non-final state
-    private static int UnderscoreWholeFraction(String input, int count)
+    private static int decimalWholeNumberState(String input, int count)
     {
 
     }
 
     // non-final state
-    private static int UnderscoreExponent(String input, int count)
+    private static int exponentState(String input, int count)
+    {
+
+    }
+
+    // final state
+    private static int suffixState(String input, int count)
+    {
+
+    }
+
+    // final state
+    private static int fractionState(String input, int count)
+    {
+
+    }
+
+    // final state
+    private static int fractionWithWholeState(String input, int count)
+    {
+
+    }
+
+    // final state
+    private static int exponentNumberState(String input, int count)
+    {
+
+    }
+
+    // non-final state
+    private static int underscoreFractionState(String input, int count)
+    {
+
+    }
+
+    // non-final state
+    private static int underscoreWholeFraction(String input, int count)
+    {
+
+    }
+
+    // non-final state
+    private static int underscoreExponent(String input, int count)
     {
 
     }
