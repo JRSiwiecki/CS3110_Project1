@@ -2,78 +2,17 @@
 // Class: CS 3110.02
 // Professor: Qichao Dong
 // Project 1
-// Date: 4/9/2022
+// Date: 4/13/2022
 // Due Date: 4/13/2022
-// Description: Converts string input to a float.  
-//      Accepts: Integers, Floats, Decimals (all with scientific notation)
-//      Rejects: Hexadecimal, Letters, Empty String
-//          ** Doesn't use a DFA for project 1, will be fixed for project 2.
+// File Name: stringToFloat.java
+// Description: Converts validated string input to a floating-point literal.
 
-import java.util.Scanner;
 import java.math.BigDecimal;
 
 public class stringToFloat
 {
-    public static void main(String[] args)
-    {  
-        Scanner scan = new Scanner(System.in);
-        boolean done = false;
-        
-        // input loop
-        while (!done)
-        {
-            // ensure that our input is in fact a float, or at least a number
-            try
-            {
-                System.out.print("Please enter a float (Enter 'q' to quit): ");
-                String input = scan.nextLine();
-                
-                
-                
-                if (input.equals("q") || input.equals("Q"))
-                {
-                    done = true;
-                    break;
-                }
-
-
-                if (input.isEmpty() || input.isBlank())
-                    throw new NumberFormatException("Cannot enter empty input");
-                
-                if (input.contains("x"))
-                    throw new NumberFormatException("Hexadecimal input is rejected.");
-                
-
-                if ((input.contains("e") || input.contains("E")))
-                {
-                    if (input.length() - 1 == input.indexOf("e") || input.length() - 1 == input.indexOf("E"))
-                        throw new NumberFormatException("No value for exponent entered.");
-                }
-                   
-                input = removeSpaces(input);
-                float output = stringToFloat(input);
-
-                System.out.println("Built-in Java Function: " + Float.parseFloat(input));
-                System.out.println("My Handmade Function: " + output);
-
-                if (Float.parseFloat(input) == output)
-                    System.out.println("They are equal!");
-        
-                else
-                    System.out.println("They are not equal!");
-            }
-
-            catch (NumberFormatException e)
-            {
-                System.out.println("A valid decimal float was not entered.");
-            }
-        }
-        scan.close();
-    }      
-    
-    
     // converts a string to a float
-    public static float stringToFloat(String input)
+    public static float convertStringToFloat(String input)
     {
         // big decimal provides more precision in calculations, the value is converted to a float at the end
         BigDecimal accResult = new BigDecimal("0");
@@ -91,7 +30,7 @@ public class stringToFloat
             decimalPosition = input.indexOf(".");
         
         // avoids errors in calculations when there is no decimal
-        else if (input.contains("f") || input.contains("F"))
+        else if (input.contains("f") || input.contains("F") || input.contains("d") || input.contains("D"))
         {
             isFractional = false;
             decimalPosition = input.length() - 1;
@@ -118,6 +57,9 @@ public class stringToFloat
             char nextChar = input.charAt(i);
             
             if (nextChar == '-')
+                continue;
+
+            if (nextChar == '_')
                 continue;
             
             if (nextChar == 'f' || nextChar == 'F')
@@ -151,7 +93,10 @@ public class stringToFloat
         {
             char nextChar = input.charAt(i);
 
-            if (nextChar == 'f' || nextChar == 'F')
+            if (nextChar == '_')
+                continue;
+            
+            if (nextChar == 'f' || nextChar == 'F' || nextChar == 'd' || nextChar == 'D')
                 break;
             
             if (isPositive)
@@ -209,6 +154,9 @@ public class stringToFloat
             
             if (nextChar == '-')
                 continue;
+
+            if (nextChar == '_')
+                continue;
             
             if (nextChar == 'e' || nextChar == 'E')
                 break;
@@ -238,6 +186,9 @@ public class stringToFloat
         {
             char nextChar = input.charAt(i);
             
+            if (nextChar == '_')
+                continue;
+            
             if (isPositive)
             {
                 BigDecimal tempResult = smallFactor.multiply(BigDecimal.valueOf(nextChar - '0'));
@@ -264,7 +215,7 @@ public class stringToFloat
             if (nextChar == '-' || nextChar == 'e' || nextChar == 'E')
                 break;
 
-            if (nextChar == 'f' || nextChar == '+' || nextChar == 'F')
+            if (nextChar == 'f' || nextChar == 'F' || nextChar == 'd' || nextChar == 'D' || nextChar == '+' || nextChar == '_')
                 continue;
             
             if (expPositive)

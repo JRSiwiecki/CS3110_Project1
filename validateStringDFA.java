@@ -15,10 +15,6 @@
 //                         between digits that denote the whole-number part, and between digits 
 //                         that denote the fraction part, and between digits that denote the exponent. 
 
-//      Rejects: Hexadecimal
-
-  
-
 import java.util.Scanner;
 
 public class validateStringDFA 
@@ -35,6 +31,7 @@ public class validateStringDFA
         if (validity == 1)
         {
             System.out.println("Input accepted.");
+            System.out.println(stringToFloat.convertStringToFloat(input));
             return true;
         }
 
@@ -63,8 +60,6 @@ public class validateStringDFA
         {
             System.exit(0);
         }
-
-        
 
         return userInput;
     }
