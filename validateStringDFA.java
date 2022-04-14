@@ -98,27 +98,12 @@ public class validateStringDFA
         
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 return wholeNumberState(input, count + 1);
                 
-            case '+':
-            case '-':
-            case '_':
-            case 'e':
-            case 'E':
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case '+': case '-': case '_': case 'e': case 'E': case 'f':
+            case 'F': case 'd': case 'D':
                 return invalidState(input, count + 1);
                 
             case '.':
@@ -142,16 +127,8 @@ public class validateStringDFA
     
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = wholeNumberState(input, count + 1);
                 break;
                 
@@ -163,20 +140,15 @@ public class validateStringDFA
                 result = decimalWholeNumberState(input, count + 1);
                 break;
             
-            case 'e':
-            case 'E':
+            case 'e': case 'E':
                 result = exponentState(input, count + 1);
                 break;
 
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case 'f': case 'F': case 'd': case 'D':
                 result = suffixState(input, count + 1);
                 break;
             
-            case '+':
-            case '-':
+            case '+': case '-':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -208,29 +180,13 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = fractionState(input, count + 1);
                 break;
             
-            case '+':
-            case '-':
-            case '_':
-            case 'e':
-            case 'E':
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
-            case '.':
+            case '+': case '-': case '_': case 'e': case 'E':
+            case 'f': case 'F': case 'd': case 'D': case '.':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -254,21 +210,12 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = wholeNumberState(input, count + 1);
                 break;
 
-            case '+':
-            case '-':
+            case '+': case '-':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -276,13 +223,8 @@ public class validateStringDFA
                 result = underscoreWholeNumberState(input, count + 1);
                 break;
 
-            case '.':
-            case 'e':
-            case 'E':
-            case 'd':
-            case 'D':
-            case 'f':
-            case 'F':
+            case '.': case 'e': case 'E': case 'd': case 'D':
+            case 'f': case 'F':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -306,31 +248,16 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = fractionWithWholeState(input, count + 1);
                 break;
 
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case 'f': case 'F': case 'd': case 'D':
                 result = suffixState(input, count + 1);
                 break;
 
-            case '+':
-            case '-':
-            case '_':
-            case 'e':
-            case 'E':
+            case '+': case '-': case '_': case 'e': case 'E':
             case '.':
                 result = invalidState(input, count + 1);
                 break;
@@ -355,29 +282,14 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9': 
-            case '+':
-            case '-':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
+            case '-': case '+':
                 result = exponentNumberState(input, count + 1);
                 break;
 
-            case '_':
-            case '.':
-            case 'e':
-            case 'E':
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case '.': case 'e': case 'E': case 'f': case 'F': 
+            case 'd': case 'D':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -415,22 +327,12 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = fractionState(input, count + 1);
                 break;
 
-            case '+':
-            case '-':
-            case '.':
+            case '+': case '-': case '.':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -438,15 +340,11 @@ public class validateStringDFA
                 result = underscoreFractionState(input, count + 1);
                 break;
 
-            case 'e':
-            case 'E':
+            case 'e': case 'E':
                 result = exponentState(input, count + 1);
                 break;
 
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case 'f': case 'F': case 'd': case 'D':
                 result = suffixState(input, count + 1);
                 break;
 
@@ -470,22 +368,12 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = fractionWithWholeState(input, count + 1);
                 break;
 
-            case '+':
-            case '-':
-            case '.':
+            case '+': case '-': case '.':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -493,15 +381,11 @@ public class validateStringDFA
                 result = underscoreWholeFraction(input, count + 1);
                 break;
 
-            case 'e':
-            case 'E':
+            case 'e': case 'E':
                 result = exponentState(input, count + 1);
                 break;
 
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case 'f': case 'F': case 'd': case 'D':
                 result = suffixState(input, count + 1);
                 break;
 
@@ -525,24 +409,12 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = exponentNumberState(input, count + 1);
                 break;
 
-            case '+':
-            case '-':
-            case '.':
-            case 'e':
-            case 'E':
+            case '+': case '-': case '.': case 'e': case 'E':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -550,10 +422,7 @@ public class validateStringDFA
                 result = underscoreExponent(input, count + 1);
                 break;
 
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case 'f': case 'F': case 'd': case 'D':
                 result = suffixState(input, count + 1);
                 break;
 
@@ -577,16 +446,8 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = fractionState(input, count + 1);
                 break;
 
@@ -594,15 +455,8 @@ public class validateStringDFA
                 result = underscoreFractionState(input, count + 1);
                 break;
             
-            case '+':
-            case '-':
-            case '.':
-            case 'e':
-            case 'E':
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case '+': case '-': case '.': case 'e': case 'E':
+            case 'f': case 'F': case 'd': case 'D':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -626,16 +480,8 @@ public class validateStringDFA
 
         switch (c) 
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = fractionWithWholeState(input, count + 1);
                 break;
 
@@ -643,15 +489,8 @@ public class validateStringDFA
                 result = underscoreWholeFraction(input, count + 1);
                 break;
 
-            case '+':
-            case '-':
-            case '.':
-            case 'e':
-            case 'E':
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case '+': case '-': case '.': case 'e': case 'E':
+            case 'f': case 'F': case 'd': case 'D':
                 result = invalidState(input, count + 1);
                 break;
 
@@ -675,16 +514,8 @@ public class validateStringDFA
 
         switch (c)
         {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
                 result = exponentNumberState(input, count + 1);
                 break;
 
@@ -692,15 +523,8 @@ public class validateStringDFA
                 result = underscoreExponent(input, count + 1);
                 break;
 
-            case '+':
-            case '-':
-            case '.':
-            case 'e':
-            case 'E':
-            case 'f':
-            case 'F':
-            case 'd':
-            case 'D':
+            case '+': case '-': case '.': case 'e': case 'E':
+            case 'f': case 'F': case 'd': case 'D':
                 result = invalidState(input, count + 1);
                 break;
 
