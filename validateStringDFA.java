@@ -84,7 +84,7 @@ public class validateStringDFA
     // and recursion will only return the value for the first method that was called.
     // if we reach the end of the input string when we first get to a method, then
     // we return 0 from that method if the state is a non-final state, and if
-    // it's a final state, we return 0.
+    // it's a final state, we return 1.
     
     // non-final state
     private static int startState(String input, int count)
