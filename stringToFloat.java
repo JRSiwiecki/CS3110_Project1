@@ -58,10 +58,7 @@ public class stringToFloat
         {
             char nextChar = input.charAt(i);
             
-            if (nextChar == '-')
-                continue;
-
-            if (nextChar == '_')
+            if (nextChar == '-' || nextChar == '_')
                 continue;
             
             if (nextChar == 'f' || nextChar == 'F')
@@ -154,10 +151,7 @@ public class stringToFloat
         {
             char nextChar = input.charAt(i);
             
-            if (nextChar == '-')
-                continue;
-
-            if (nextChar == '_')
+            if (nextChar == '-' || nextChar == '_')
                 continue;
             
             if (nextChar == 'e' || nextChar == 'E')
@@ -235,12 +229,15 @@ public class stringToFloat
             factor *= 10;
         }
 
-        BigDecimal tenFactor = new BigDecimal("10");
+        
         
         // if the exponent is positive, just do result * (10 ^ exponent)
         if (expPositive)
+        {
+            BigDecimal tenFactor = new BigDecimal("10");
             accResult = accResult.multiply(tenFactor.pow(exponent));
-        
+        }
+             
         // if the exponent is not positive, we can't use negative values for exponents with big decimal, so 
         // shift the decimal point by the amount of our exponent
         else 
