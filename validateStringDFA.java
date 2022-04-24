@@ -16,11 +16,7 @@
 //                         that denote the fraction part, and between digits that denote the exponent.
 //                      ** If we receive any input symbols that is not part of the alphabet, the input is rejected. 
 
-// *** RUN THIS FILE TO TEST PROGRAM
-
-import java.util.Scanner;
-
-public class validateStringDFA 
+public class ValidateStringDFA 
 { 
     public static boolean validateInput(String input) 
     {
@@ -34,7 +30,7 @@ public class validateStringDFA
         if (validity == 1)
         {
             System.out.println("Input accepted.");
-            System.out.println("Float: " + stringToFloat.convertStringToFloat(input));
+            System.out.println("Float: " + StringToFloat.convertStringToFloat(input));
             return true;
         }
 
@@ -48,30 +44,6 @@ public class validateStringDFA
         {
             System.out.println("ERROR: This should not have been reached.");
             return false;
-        }
-    }
-
-    public static String receiveInput() 
-    {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Please enter a float (Enter 'q' to quit): ");
-
-        String userInput = in.nextLine();
-
-        if (userInput.charAt(0) == ('q') || userInput.charAt(0) == ('Q')) 
-        {
-            System.exit(0);
-        }
-
-        return userInput;
-    }
-    
-    public static void main(String[] args) 
-    {
-        while (true) 
-        {
-            String input = receiveInput();
-            validateInput(input);
         }
     }
 

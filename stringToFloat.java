@@ -11,7 +11,7 @@
 
 import java.math.BigDecimal;
 
-public class stringToFloat
+public class StringToFloat
 {
     // converts a string to a float
     public static float convertStringToFloat(String input)
