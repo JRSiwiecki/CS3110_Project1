@@ -337,6 +337,10 @@ public class ValidateExpressionPDA
                 result = whiteSpaceState(input, count + 1, stack);
                 break;
 
+            case ')':
+                result = closeParenthesisState(input, count + 1, stack);
+                break;
+            
             default:
                 return invalidState(input, count + 1, stack);
         }
@@ -618,9 +622,12 @@ public class ValidateExpressionPDA
                 result = suffixState(input, count + 1, stack);
                 break;
 
-            case '+': case '-': case '_': case 'e': case 'E':
-            case '.':
+            case '_': case 'e': case 'E': case '.':
                 result = invalidState(input, count + 1, stack);
+                break;
+
+            case '+': case '-': case '/': case '*':
+                result = operatorState(input, count + 1, stack);
                 break;
 
             case '(':
@@ -715,6 +722,14 @@ public class ValidateExpressionPDA
                 result = invalidState(input, count + 1, stack);
                 break;
 
+            case '(':
+                result = openParenthesisState(input, count + 1, stack);
+                break;
+
+            case ')':
+                result = closeParenthesisState(input, count + 1, stack);
+                break;
+            
             case '.':
                 result = fractionState(input, count + 1, stack);
                 break;
