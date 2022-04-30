@@ -84,7 +84,7 @@ public class EvaluateExpression
             if (Character.isDigit(nextCharacter)) 
             {
                 float temp = findFloat(expression);
-                stack.push(findFloat(expression));
+                stack.push(findFloat(expression.substring(i)));
                 String tempString = String.valueOf(temp);
                 i += tempString.length();
             }
