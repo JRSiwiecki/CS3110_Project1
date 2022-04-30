@@ -359,7 +359,11 @@ public class ValidateExpressionPDA
                 result = fractionWithWholeState(input, count + 1, stack);
                 break;
 
-            case '+': case '-': case '.':
+            case '+': case '-': case '*': case '/':
+                result = operatorState(input, count + 1, stack);
+                break;
+            
+            case '.':
                 result = invalidState(input, count + 1, stack);
                 break;
 
@@ -538,9 +542,18 @@ public class ValidateExpressionPDA
         }
         
         char c = input.charAt(count);
-        int result = -1;
+        
+        if (count == 0)
+        {
+            stack.push(c);
+        }
 
-        stack.push(c);
+        else
+        {
+            stack.push(input.charAt(count - 1));
+        }
+
+        int result = -1;
 
         switch (c)
         {
@@ -554,6 +567,14 @@ public class ValidateExpressionPDA
                 result = invalidState(input, count + 1, stack);
                 break;
 
+            case '(':
+                result = openParenthesisState(input, count + 1, stack);
+                break;
+            
+            case ')':
+                result = closeParenthesisState(input, count + 1, stack);
+                break;
+            
             case '.':
                 result = decimalNoWholeNumberState(input, count + 1, stack);
                 break;
