@@ -118,7 +118,7 @@ public class StringToFloat
     }
     
     // same as previous function but for scientific notation
-    public static float stringToFloatScientific(String input) 
+    private static float stringToFloatScientific(String input) 
     {
         BigDecimal accResult = new BigDecimal("0");
         boolean isPositive = true, expPositive = true, isFractional = false;
