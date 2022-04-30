@@ -313,10 +313,14 @@ public class ValidateExpressionPDA
                 result = fractionState(input, count + 1, stack);
                 break;
 
-            case '+': case '-': case '.':
-                result = invalidState(input, count + 1, stack);
+            case '+': case '-': case '*': case '/':
+                result = operatorState(input, count + 1, stack);
                 break;
 
+            case '.':
+                result = invalidState(input, count + 1, stack);
+                break;
+            
             case '_':
                 result = underscoreFractionState(input, count + 1, stack);
                 break;
@@ -327,6 +331,10 @@ public class ValidateExpressionPDA
 
             case 'f': case 'F': case 'd': case 'D':
                 result = suffixState(input, count + 1, stack);
+                break;
+
+            case ' ':
+                result = whiteSpaceState(input, count + 1, stack);
                 break;
 
             default:
@@ -417,6 +425,10 @@ public class ValidateExpressionPDA
 
             case 'f': case 'F': case 'd': case 'D':
                 result = suffixState(input, count + 1, stack);
+                break;
+
+            case ' ':
+                result = whiteSpaceState(input, count + 1, stack);
                 break;
 
             default:
@@ -630,12 +642,12 @@ public class ValidateExpressionPDA
         return result;
     }
 
-    // non-final state
+    // final state
     private static int whiteSpaceState(String input, int count, Stack<Character> stack)
     {
         if (count >= input.length()) 
         {
-            return 0;
+            return 1;
         }
         
         char c = input.charAt(count);
@@ -663,6 +675,10 @@ public class ValidateExpressionPDA
 
             case ')':
                 result = closeParenthesisState(input, count + 1, stack);
+                break;
+
+            case ' ':
+                result = whiteSpaceState(input, count + 1, stack);
                 break;
 
             default:
