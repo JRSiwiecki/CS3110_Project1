@@ -1,9 +1,7 @@
 import java.util.Stack;
 
 public class ValidateExpressionPDA 
-{
-    // TODO: () is accepted when it shouldnt be!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
+{  
     public static boolean validateExpression(String input)
     {
         int validity = -1;
@@ -284,6 +282,10 @@ public class ValidateExpressionPDA
             
             case '.':
                 result = invalidState(input, count + 1, stack);
+                break;
+
+            case ' ':
+                result = whiteSpaceState(input, count + 1, stack);
                 break;
 
             default:
@@ -567,6 +569,10 @@ public class ValidateExpressionPDA
             case '.':
                 result = decimalNoWholeNumberState(input, count + 1, stack);
                 break;
+
+            case ' ':
+                result = whiteSpaceState(input, count + 1, stack);
+                break;
             
             default:
                 return invalidState(input, count + 1, stack);
@@ -635,22 +641,28 @@ public class ValidateExpressionPDA
         char c = input.charAt(count);
         int result = -1;
 
-        stack.push(c);
-
         switch (c)
         {
             case '0': case '1': case '2': case '3': case '4':
             case '5': case '6': case '7': case '8': case '9':
-                result = fractionWithWholeState(input, count + 1, stack);
+                result = wholeNumberState(input, count + 1, stack);
                 break;
 
-            case 'f': case 'F': case 'd': case 'D':
-                result = suffixState(input, count + 1, stack);
-                break;
-
-            case '+': case '-': case '_': case 'e': case 'E':
-            case '.':
+            case 'f': case 'F': case 'd': case 'D': case 'e': 
+            case 'E': case '.': case '_': 
                 result = invalidState(input, count + 1, stack);
+                break;
+
+            case '+': case '-': case '*': case '/':
+                result = operatorState(input, count + 1, stack);
+                break;
+
+            case '(':
+                result = openParenthesisState(input, count + 1, stack);
+                break;
+
+            case ')':
+                result = closeParenthesisState(input, count + 1, stack);
                 break;
 
             default:
@@ -689,6 +701,10 @@ public class ValidateExpressionPDA
 
             case '.':
                 result = fractionState(input, count + 1, stack);
+                break;
+
+            case ' ':
+                result = whiteSpaceState(input, count + 1, stack);
                 break;
             
             default:
