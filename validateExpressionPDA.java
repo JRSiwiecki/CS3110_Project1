@@ -2,15 +2,8 @@ import java.util.Stack;
 
 public class ValidateExpressionPDA 
 {
-    // use PDA to check if expression is valid, if it is then we will calculate the expression
-    // stack will be used to make sure parentheses are valid
-    // PDA will then determine from each point if the expression is valid from any point
-    // how will the program be able to tell when a number is over? use the DFA from validateStringDFA
-    // to check? if it's valid then move on, if it's invalid then the expression itself must be invalid?
-    // if expression is valid then use method from EvaluateExpression.java
-    // will likely have to modify how input is received, must be changed from project 1 since we 
-    // are taking on a whole string expression and not just a string of a float
-
+    // TODO: () is accepted when it shouldnt be!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
     public static boolean validateExpression(String input)
     {
         int validity = -1;
@@ -563,16 +556,12 @@ public class ValidateExpressionPDA
                 break;
 
             case 'f': case 'F': case 'd': case 'D': case '+': 
-            case '-': case '_': case 'e': case 'E':
+            case '-': case '_': case 'e': case 'E': case ')':
                 result = invalidState(input, count + 1, stack);
                 break;
 
             case '(':
                 result = openParenthesisState(input, count + 1, stack);
-                break;
-            
-            case ')':
-                result = closeParenthesisState(input, count + 1, stack);
                 break;
             
             case '.':
