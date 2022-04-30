@@ -561,13 +561,53 @@ public class ValidateExpressionPDA
                 break;
 
             case '(':
-                result = openParenthesisState(input, count, stack);
+                result = openParenthesisState(input, count + 1, stack);
                 break;
             
             case ')':
-                result = closeParenthesisState(input, count, stack);
+                result = closeParenthesisState(input, count + 1, stack);
                 break;
             
+            case ' ':
+                result = whiteSpaceState(input, count + 1, stack);
+                break;
+            
+            default:
+                return invalidState(input, count + 1, stack);
+        }
+
+        return result;
+    }
+
+    // non-final state
+    private static int whiteSpaceState(String input, int count, Stack<Character> stack)
+    {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
+        char c = input.charAt(count);
+        int result = -1;
+
+        stack.push(c);
+
+        switch (c)
+        {
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
+                result = fractionWithWholeState(input, count + 1, stack);
+                break;
+
+            case 'f': case 'F': case 'd': case 'D':
+                result = suffixState(input, count + 1, stack);
+                break;
+
+            case '+': case '-': case '_': case 'e': case 'E':
+            case '.':
+                result = invalidState(input, count + 1, stack);
+                break;
+
             default:
                 return invalidState(input, count + 1, stack);
         }
