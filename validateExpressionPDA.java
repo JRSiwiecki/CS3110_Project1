@@ -8,7 +8,6 @@ public class ValidateExpressionPDA
     // how will the program be able to tell when a number is over? use the DFA from validateStringDFA
     // to check? if it's valid then move on, if it's invalid then the expression itself must be invalid?
     // if expression is valid then use method from EvaluateExpression.java
-
     // will likely have to modify how input is received, must be changed from project 1 since we 
     // are taking on a whole string expression and not just a string of a float
 
@@ -268,10 +267,37 @@ public class ValidateExpressionPDA
             return 1;
         }
         
-        else
+        char c = input.charAt(count);
+        int result = -1;
+
+        switch (c)
         {
-            return 0;
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
+                result = invalidState(input, count + 1, stack);
+                break;
+
+            case '+': case '-': case '*': case '/':
+                result = operatorState(input, count + 1, stack);
+                break;
+
+            case ')':
+                result = closeParenthesisState(input, count + 1, stack);
+                break;
+
+            case '(':
+                result = openParenthesisState(input, count + 1, stack);
+                break;
+            
+            case '.':
+                result = invalidState(input, count + 1, stack);
+                break;
+
+            default:
+                return invalidState(input, count + 1, stack);
         }
+
+        return result;
     }
 
     // final state
@@ -349,6 +375,14 @@ public class ValidateExpressionPDA
                 result = suffixState(input, count + 1, stack);
                 break;
 
+            case '(':
+                result = openParenthesisState(input, count + 1, stack);
+                break;
+            
+            case ')':
+                result = closeParenthesisState(input, count + 1, stack);
+                break;
+            
             default:
                 return invalidState(input, count + 1, stack);
         }
@@ -512,18 +546,18 @@ public class ValidateExpressionPDA
         {
             case '0': case '1': case '2': case '3': case '4':
             case '5': case '6': case '7': case '8': case '9':
-                result = fractionWithWholeState(input, count + 1, stack);
+                result = wholeNumberState(input, count + 1, stack);
                 break;
 
-            case 'f': case 'F': case 'd': case 'D':
-                result = suffixState(input, count + 1, stack);
-                break;
-
-            case '+': case '-': case '_': case 'e': case 'E':
-            case '.':
+            case 'f': case 'F': case 'd': case 'D': case '+': 
+            case '-': case '_': case 'e': case 'E':
                 result = invalidState(input, count + 1, stack);
                 break;
 
+            case '.':
+                result = decimalNoWholeNumberState(input, count + 1, stack);
+                break;
+            
             default:
                 return invalidState(input, count + 1, stack);
         }
@@ -536,6 +570,7 @@ public class ValidateExpressionPDA
     {
         if (count >= input.length()) 
         {
+            stack.pop();
             return 1;
         }
         
@@ -608,6 +643,44 @@ public class ValidateExpressionPDA
                 result = invalidState(input, count + 1, stack);
                 break;
 
+            default:
+                return invalidState(input, count + 1, stack);
+        }
+
+        return result;
+    }
+
+    // non-final state
+    private static int operatorState(String input, int count, Stack<Character> stack)
+    {
+        if (count >= input.length()) 
+        {
+            return 0;
+        }
+        
+        char c = input.charAt(count);
+        int result = -1;
+
+        switch (c)
+        {
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
+                result = wholeNumberState(input, count + 1, stack);
+                break;
+
+            case '_':
+                result = invalidState(input, count + 1, stack);
+                break;
+            
+            case '+': case '-': case 'e': case 'E': case '*':
+            case '/': case 'f': case 'F': case 'd': case 'D':
+                result = invalidState(input, count + 1, stack);
+                break;
+
+            case '.':
+                result = fractionState(input, count + 1, stack);
+                break;
+            
             default:
                 return invalidState(input, count + 1, stack);
         }
